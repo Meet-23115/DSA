@@ -1,50 +1,39 @@
 #include <iostream>
-#include <vector>
-
 using namespace std;
 
-struct ListNode {
+struct MeetCode {
     int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    MeetCode* value;
+    MeetCode(int x) : val(x), value(nullptr) {}
 };
 
-class Solution {
+class Meet {
+private:
+    MeetCode* meet; // Class member pointer
 public:
+    Meet() : meet(nullptr) {} // Initialize `meet` to nullptr in the constructor
 
-    void announce(){
-        cout << "This is an object of class solution" << endl;
+    void call(int a) {
+        meet = new MeetCode(a); // Assign to the member variable
     }
-    
-};
 
-int main(){
-
-    Solution s;
-    s.announce();
-    ListNode* head = nullptr;
-    ListNode* tail = nullptr;
-    
-    for(int i = 1; i <= 10; i++){
-        ListNode* newNode = new ListNode(i);
-        if(head == nullptr) {
-            head = newNode;
-            tail = newNode;
+    void display() {
+        if (meet) { // Check if `meet` is initialized
+            cout << meet->val << endl;
         } else {
-            tail->next = newNode;
-            tail = newNode;   
+            cout << "MeetCode object is not initialized!" << endl;
         }
     }
 
-    ListNode* current = head;
-
-    while(current != nullptr){
-        cout << current->val << " ";
-        current = current->next;
+    ~Meet() {
+        delete meet; // Free memory allocated for `meet` to prevent leaks
     }
-    
+};
 
+int main() {
+    Meet m;
+    
+    m.call(21);   // Initialize with a value
+    m.display();  // Display the value
     return 0;
 }
