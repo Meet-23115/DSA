@@ -12,22 +12,22 @@ struct node
 
 int main()
 {
-    node *head = nullptr; // Initialize head to nullptr
-    node *tail = nullptr; // Initialize tail to nullptr
+    node *head = nullptr; 
+    node *tail = nullptr; 
 
-    // Create linked list
+    
     for (int i = 0; i < 10; i++)
     {
-        node *n = new node(i); // Dynamically allocate a new node
+        node *n = new node(i);
         if (head == nullptr)
         {
-            head = n; // If the list is empty, set head to the new node
-            tail = n; // Tail is also the new node
+            head = n;
+            tail = n;
         }
         else
         {
-            tail->next = n;    // Link the current tail to the new node
-            tail = tail->next; // Move the tail pointer to the new node
+            tail->next = n;
+            tail = tail->next;
         }
     }
 
