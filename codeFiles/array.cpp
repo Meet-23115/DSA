@@ -1,55 +1,67 @@
 #include <iostream>
 using namespace std;
 
-class array{
-    private:
-        int* arr;        // Pointer to dynamically allocated array
-        int capacity;    // Maximum size of the array
-        int size; 
-    public:
-        array(int cap) : capacity(cap), size(0) {
+class arra
+{
+private:
+    int *arr;     // Pointer to dynamically allocated array
+    int capacity; // Maximum size of the array
+    int size;
+
+public:
+    arra(int cap) : capacity(cap), size(0)
+    {
         arr = new int[capacity]; // Allocate memory for the array
     }
 
-    void add(int x){
-        if(size < capacity){
+    void add(int x)
+    {
+        if (size < capacity)
+        {
             arr[size++] = x;
         }
-        else{
+        else
+        {
             cout << "Array is full. Cannot add more elements." << endl;
         }
     }
 
     // Access an element by index
-    int get(int index) const {
-        if (index >= 0 && index < size) {
+    int get(int index) const
+    {
+        if (index >= 0 && index < size)
+        {
             return arr[index];
-        } else {
+        }
+        else
+        {
             cout << "Index out of bounds!" << endl;
             return -1; // Return an invalid value for error
         }
     }
 
     // Display the array contents
-    void display() const {
+    void display() const
+    {
         cout << "Array elements: ";
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
             cout << arr[i] << " ";
         }
         cout << endl;
     }
 
     // Destructor
-    ~array() {
+    ~arra()
+    {
         delete[] arr; // Free allocated memory
     }
-
-
 };
 
-int main(){
+int main()
+{
 
-   array arr(5);
+    arra arr(5);
 
     arr.add(1);
     arr.add(2);
@@ -60,7 +72,6 @@ int main(){
     cout << arr.get(2);
 
     arr.add(1);
-
 
     return 0;
 }
